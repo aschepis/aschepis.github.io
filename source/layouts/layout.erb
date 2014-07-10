@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title><%= current_page.data.title || "A Work in Progress" %></title>
+
+    <!-- <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300'
+    rel='stylesheet' type='text/css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag "normalize", "all" %>
+    <%= javascript_include_tag  "all" %>
+  </head>
+
+  <body>
+    <div class="container">
+      <% klass = 'left' %>
+
+      <% blog.articles.each.with_index do |article, i| %>
+        <%
+        if article.path == current_page.path ||
+          (klass == "left" && current_page.path == "index.html")
+          klass = ""
+        elsif klass == ""
+          klass = "right"
+        end
+        %>
+
+      <div class="page-container <%=klass%>" data-url="<%=article.url%>">
+        <div class="page <%= article.data.color_scheme || 'clouds' %>">
+          <div class="page-nav">
+            <% if i > 0 %>
+            <a href="#" class="prev">
+              <i class="mega-octicon octicon-chevron-left"></i>
+            </a>
+            <% end %>
+
+            <% if i < blog.articles.size - 1 %>
+            <a href="#" class="next">
+              <i class="mega-octicon octicon-chevron-right"></i>
+            </a>
+            <% end %>
+          </div>
+
+          <div class="post-content" tabindex="0">
+            <h1 class="title"><%=article.title%></h1>
+            <h3 class="author-info">Written by Adam Schepis</h3>
+            <h3 class="published-date">Originally Published <%= article.date %></h3>
+            <div class="post-actions">
+              <a href="#" class="toggle-comments"><i class="octicon octicon-comment-discussion"></i> (leave your thoughts)</a>
+            </div>
+            <div class="post-body">
+              <%= article.body %>
+            </div>
+          </div>
+        </div>
+        <div class="page-back flipped <%= article.data.color_scheme || 'clouds' %>">
+          <div class="post-content" tabindex="0">
+            <h1 class="subtitle">Comments on "<%=article.title%>"</h1>
+            <div class="post-actions">
+              <a href="#" class="toggle-comments"><i class="octicon octicon-mail-reply"></i> Back to the article.</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </body>
+</html>

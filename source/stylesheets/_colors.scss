@@ -1,0 +1,69 @@
+$turquoise: #1abc9c;
+$emerald: #2ecc71;
+$peter-river: #3498db;
+$amethyst: #9b59b6;
+$wet-asphalt: #34495e;
+$green-sea:#16a085;
+$nephritis: #27ae60;
+$belize-hole: #2980b9;
+$wisteria: #8e44ad;
+$midnight-blue: #2c3e50;
+$sunflower: #f1c40f;
+$carrot: #e67e22;
+$alizarin: #e74c3c;
+$clouds: #ecf0f1;
+$concrete: #95a5a6;
+$orange: #f39c12;
+$pumpkin: #d35400;
+$pomegranite: #c0392b;
+$silver: #bdc3c7;
+$asbestos: #7f8c8d;
+
+.turquoise { background-color: $turquoise; color: white; }
+.emerald { background-color: $emerald; color: white; }
+.peter-river { background-color: $peter-river; color: white; }
+.amethyst {
+  background-color: $amethyst;
+  color: white;
+  a, a:hover, a:visited { color: $orange; }
+}
+.wet-asphalt {
+  background-color: $wet-asphalt;
+  color: white;
+  a, a:hover, a:visited { color: $peter-river; }
+}
+.green-sea { background-color: $green-sea; color: white; }
+.nephritis {
+  background-color: $nephritis;
+  color: white;
+  a, a:hover, a:visited { color: $orange; }
+}
+.belize-hole { background-color: $belize-hole; color: white; }
+.wisteria {
+  background-color: $wisteria;
+  color: white;
+  a, a:hover, a:visited { color: $orange; }
+}
+.midnight-blue { background-color: $midnight-blue; color: white; }
+.sunflower { background-color: $sunflower; color: white; }
+.carrot { background-color: $carrot; color: white; }
+.alizarin {
+  background-color: $alizarin;
+  color: white;
+  a, a:hover, a:visited { color: $silver; }
+}
+.clouds { background-color: $clouds; color: black; }
+.concrete { background-color: $concrete; color: white; }
+.orange { background-color: $orange; color: white; }
+.pumpkin {
+  background-color: $pumpkin;
+  color: white;
+  a, a:hover, a:visited { color: $silver; }
+}
+.pomegranite {
+  background-color: $pomegranite;
+  color: white;
+  a, a:hover, a:visited { color: $silver; }
+}
+.silver { background-color: $silver; color: white; }
+.asbestos { background-color: $asbestos; color: white; }

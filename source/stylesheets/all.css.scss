@@ -1,0 +1,160 @@
+@import "colors";
+@import "mixins";
+@import "vendor/octicons/sprockets-octicons";
+
+$perspective: 1000;
+$transform-style: preserve-3d;
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body { height: 100%; }
+
+body {
+  background: black url('/images/space.jpg') no-repeat;
+  background-size: 100% auto;
+  font-size: small;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%; }
+
+h1 { margin-bottom: 1em; }
+p { margin: 1em 0; }
+
+a         { color: #00a; }
+a:hover   { color: #000; }
+a:visited { color: #a0a; }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.container {
+  min-height:100%;
+  @include transform-style($transform-style);
+  @include perspective($perspective);
+  @include perspective-origin(50% 0);
+  @include backface-visibility(hidden);
+  overflow: hidden;
+
+  .page-container {
+    z-index: 5;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    @include transform-style($transform-style);
+    @include transition(all 0.3s linear);
+    // 3d stuff
+    &.left, &.right {
+      opacity: 0;
+      visibility: hidden;
+      z-index: 1;
+    }
+    &.left {
+      @include transform(translateX(-50%) rotateY(-90deg));
+    }
+
+    &.right {
+      @include transform(translateX(50%) rotateY(90deg));
+    }
+  }
+
+  .page, .page-back {
+    z-index: 5;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    visibility: visible;
+
+    @include transition(all 0.3s linear);
+    &.flipped { opacity: 0; z-index: 4; visibility: hidden;}
+  }
+
+  .page-back.flipped {
+    @include transform(rotateX(-180deg));
+  }
+
+  .page.flipped {
+    @include transform(rotateX(180deg));
+    visibility: hidden;
+  }
+
+  .page, .page-back {
+    .post-content {
+      outline: none;
+      max-width: 800px;
+      margin: {
+        left: auto;
+        right: auto;
+      }
+      padding-left: 1em;
+      padding-right: 1em;
+      padding-bottom: 2em;
+
+      figure {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        figcaption {
+          font-style: italic;
+        }
+      }
+
+      .title {
+        font-size: 3em;
+        text-align: center;
+        margin-bottom: 0.25em;
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+      }
+      .subtitle {
+        text-align: center;
+      }
+      .published-date { text-align: center; }
+      .author-info { text-align: center; }
+      .post-actions {
+        margin-top: 1em;
+        font-size: 0.8em;
+        text-align: center;
+      }
+      .post-body {
+        margin-top: 3em;
+      }
+    }
+
+    .page-nav {
+      width: 100%;
+      position: fixed;
+      top: 0.5em;
+      left: 0;
+      a {
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+
+      a i {font-size: 48px; cursor: pointer;}
+      .prev { float: left; }
+      .next { float: right; }
+    }
+  }
+}
+
+//@import "syntax.css";
