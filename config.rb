@@ -55,6 +55,11 @@ activate :blog do |blog|
   # set options on blog
 end
 
+activate :deploy do |deploy|
+  deploy.build_before = true # default: false
+  deploy.method = :git
+end
+
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
