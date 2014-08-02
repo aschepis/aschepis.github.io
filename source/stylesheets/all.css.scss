@@ -1,6 +1,7 @@
 @import "colors";
 @import "mixins";
-@import "vendor/octicons/sprockets-octicons";
+$fa-font-path: "vendor/font-awesome/fonts";
+@import "vendor/font-awesome/scss/font-awesome";
 
 $perspective: 1000;
 $transform-style: preserve-3d;
@@ -26,8 +27,8 @@ h1 { margin-bottom: 1em; }
 p { margin: 1em 0; }
 
 a         { color: #00a; }
-a:hover   { color: #000; }
-a:visited { color: #a0a; }
+a:hover   { color: #00a; }
+a:visited { color: #00a; }
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -37,6 +38,50 @@ body {
   overflow: hidden;
 }
 
+body > nav {
+  height: 50px;
+  zindex: 10;
+  background-color: white;
+}
+
+.page-nav {
+  width: 100%;
+  position: fixed;
+  top: 1em;
+  left: 0;
+  text-align:center;
+
+  a {
+    margin-left: 1em;
+    margin-right: 1em;
+    text-decoration: none;
+  }
+
+  a i {
+    font-size: 48px;
+    cursor: pointer;
+  }
+
+  .left, .right {
+    &.inactive {
+      opacity: 0;
+      a, i { cursor: default; }
+    }
+  }
+
+  .left {
+    float: left;
+  }
+
+  .right {
+    float:right;
+  }
+
+  .center {
+    margin: 0 auto;
+  }
+}
+
 .container {
   min-height:100%;
   @include transform-style($transform-style);
@@ -44,6 +89,7 @@ body {
   @include perspective-origin(50% 0);
   @include backface-visibility(hidden);
   overflow: hidden;
+  //@include filter(blur(3px) brightness(0.5));
 
   .page-container {
     z-index: 5;
@@ -57,6 +103,7 @@ body {
 
     @include transform-style($transform-style);
     @include transition(all 0.3s linear);
+
     // 3d stuff
     &.left, &.right {
       opacity: 0;
@@ -104,15 +151,15 @@ body {
         left: auto;
         right: auto;
       }
-      padding-left: 1em;
-      padding-right: 1em;
-      padding-bottom: 2em;
+      padding: 4em 1em 2em 1em;
 
       figure {
+        max-width: 100%;
         display: block;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+        img { max-width: 100%; }
         figcaption {
           font-style: italic;
         }
@@ -139,22 +186,28 @@ body {
         margin-top: 3em;
       }
     }
+  }
+}
 
-    .page-nav {
-      width: 100%;
-      position: fixed;
-      top: 0.5em;
-      left: 0;
-      a {
-        margin-left: 1em;
-        margin-right: 1em;
+.secret-button {
+  position: fixed;
+  bottom: 0.5em;
+  right: 0.5em;
+  a {
+    text-decoration: none;
+    i.fa {
+      @include transition(all 0.15s ease-in-out);
+      font-size: 32px;
+      color: black;
+      opacity: 0.1;
+      @include filter(blur(4px));
+      &:hover {
+        opacity: 0.25;
+        @include filter(blur(0px));
       }
-
-      a i {font-size: 48px; cursor: pointer;}
-      .prev { float: left; }
-      .next { float: right; }
     }
   }
+  z-index: 1000;
 }
 
 //@import "syntax.css";

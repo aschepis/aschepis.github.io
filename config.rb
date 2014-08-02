@@ -52,7 +52,6 @@ set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
 activate :blog do |blog|
-  # set options on blog
 end
 
 activate :deploy do |deploy|
@@ -60,6 +59,17 @@ activate :deploy do |deploy|
   deploy.method = :git
   deploy.branch = 'master'
 end
+
+ready do
+  sitemap.resources.each do |page|
+    if page.path =~ /[0-9]{4}-[0-9]{2}-[0-9]{2}-.*/
+      proxy "/blog#{page.url}", page.path, :locals => { current_article: page }
+      proxy "/raw-content#{page.url}", page.path, layout: false, locals: {current_article: page}
+    end
+  end
+end
+
+sprockets.append_path File.join root, 'bower_components'
 
 # Build-specific configuration
 configure :build do

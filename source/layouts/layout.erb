@@ -19,9 +19,13 @@
   </head>
 
   <body>
+    <div class="secret-button">
+      <a href="/adventure-mode">
+        <i class="fa fa-gamepad"></i>
+      </a>
+    </div>
     <div class="container">
       <% klass = 'left' %>
-
       <% blog.articles.each.with_index do |article, i| %>
         <%
         if article.path == current_page.path ||
@@ -34,19 +38,28 @@
 
       <div class="page-container <%=klass%>" data-url="<%=article.url%>">
         <div class="page <%= article.data.color_scheme || 'clouds' %>">
-          <div class="page-nav">
-            <% if i > 0 %>
-            <a href="#" class="prev">
-              <i class="mega-octicon octicon-chevron-left"></i>
-            </a>
-            <% end %>
+          <nav class="page-nav">
+            <div class="left <% if i == 0 %>inactive<% end %>">
+                <a href="#" class="prev">
+                  <i class="fa fa-chevron-left"></i>
+                </a>
+            </div>
 
-            <% if i < blog.articles.size - 1 %>
-            <a href="#" class="next">
-              <i class="mega-octicon octicon-chevron-right"></i>
-            </a>
-            <% end %>
-          </div>
+            <div class="right <% if i == blog.articles.size - 1 %>inactive<% end %>">
+                <a href="#" class="next">
+                  <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+
+            <div class="center">
+              <a href="/" class="home">
+                <i class="fa fa-home"></i>
+              </a>
+              <a href="https://github.com/aschepis" class="about">
+                <i class="fa fa-github"></i>
+              </a>
+            </div>
+          </nav>
 
           <div class="post-content" tabindex="0">
             <h1 class="title"><%=article.title%></h1>
@@ -55,8 +68,10 @@
             <div class="post-actions">
               <a href="#" class="toggle-comments"><i class="octicon octicon-comment-discussion"></i> (leave your thoughts)</a>
             </div>
-            <div class="post-body">
-              <%= article.body %>
+            <div class="post-body" data-url="<%=article.url%>">
+              <% if article.url == current_page.url %>
+                <%= article.body %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -72,4 +87,22 @@
       <% end %>
     </div>
   </body>
+  <script type="text/javascript">
+    $(function() {
+      var dynframe = function(src) {return $('<iframe src="'+src+'"></iframe>');}
+      <% blog.articles.each do |article| %>
+      <% unless article.url == current_page.url %>
+      {
+        var iframe = dynframe('/raw-content<%=article.url%>');
+        $('body').append(iframe);
+        iframe.one('load', function() {
+          var html = $(this).contents().find('body').html()
+          $(".post-body[data-url='<%=article.url%>']").html(html);
+          $(this).remove()
+        });
+      }
+      <% end %>
+      <% end %>
+    });
+  </script>
 </html>

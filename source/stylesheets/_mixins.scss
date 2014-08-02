@@ -51,3 +51,9 @@
 @mixin reset-shadow-box() {
   @include shadow-box(0px, 0px, 0px);
 }
+
+@mixin filter($filter) {
+  filter: $filter;
+  -webkit-filter: $filter;
+  -moz-filter: $filter;
+}

@@ -2,6 +2,7 @@
 #= require vendor/jquery.detect_swipe
 #= require vendor/underscore
 #= require vendor/mousetrap
+#= require vendor/headroom
 
 class Cube
   constructor: (@$) ->
@@ -10,12 +11,19 @@ class Cube
 
     # @$('body').on 'touchstart mousedown', @startDrag
     # @$('body').on 'touchend mouseup', @endDrag
-    @$('.page-nav a').on 'click', (e) =>
-      e.preventDefault()
-      if @$(e.currentTarget).hasClass('next') then @nextPage() else @prevPage()
+    @$('.page-nav a.prev, .page-nav a.next').on 'click', @handleNavClick
     @$('a.toggle-comments').on 'click', @toggleComments
-
     @focus()
+
+  handleNavClick: (e) =>
+    e.preventDefault()
+    $el = @$(e.currentTarget)
+    if $el.hasClass('next')
+      @nextPage()
+    else if $el.hasClass('prev')
+      @prevPage()
+    else if $el.hasClass('menu')
+      @toggleMenu()
 
   focus: ->
     @currentPage().find('.page .post-content').focus()

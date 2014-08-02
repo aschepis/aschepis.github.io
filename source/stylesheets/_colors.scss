@@ -19,51 +19,29 @@ $pomegranite: #c0392b;
 $silver: #bdc3c7;
 $asbestos: #7f8c8d;
 
-.turquoise { background-color: $turquoise; color: white; }
-.emerald { background-color: $emerald; color: white; }
-.peter-river { background-color: $peter-river; color: white; }
-.amethyst {
-  background-color: $amethyst;
-  color: white;
-  a, a:hover, a:visited { color: $orange; }
+@mixin theme($bg, $text:"white", $links:"inherit") {
+  background-color: $bg;
+  color: unquote($text);
+  a, a:hover, a:visited, a i.fa { color: unquote($links); }
 }
-.wet-asphalt {
-  background-color: $wet-asphalt;
-  color: white;
-  a, a:hover, a:visited { color: $peter-river; }
-}
-.green-sea { background-color: $green-sea; color: white; }
-.nephritis {
-  background-color: $nephritis;
-  color: white;
-  a, a:hover, a:visited { color: $orange; }
-}
-.belize-hole { background-color: $belize-hole; color: white; }
-.wisteria {
-  background-color: $wisteria;
-  color: white;
-  a, a:hover, a:visited { color: $orange; }
-}
-.midnight-blue { background-color: $midnight-blue; color: white; }
-.sunflower { background-color: $sunflower; color: white; }
-.carrot { background-color: $carrot; color: white; }
-.alizarin {
-  background-color: $alizarin;
-  color: white;
-  a, a:hover, a:visited { color: $silver; }
-}
-.clouds { background-color: $clouds; color: black; }
-.concrete { background-color: $concrete; color: white; }
-.orange { background-color: $orange; color: white; }
-.pumpkin {
-  background-color: $pumpkin;
-  color: white;
-  a, a:hover, a:visited { color: $silver; }
-}
-.pomegranite {
-  background-color: $pomegranite;
-  color: white;
-  a, a:hover, a:visited { color: $silver; }
-}
-.silver { background-color: $silver; color: white; }
-.asbestos { background-color: $asbestos; color: white; }
+
+.turquoise{ @include theme($turquoise); }
+.emerald { @include theme($emerald); }
+.peter-river { @include theme($peter-river, white, pink); }
+.amethyst { @include theme($amethyst, white, $orange); }
+.wet-asphalt { @include theme($wet-asphalt, white, $peter-river); }
+.green-sea { @include theme($green-sea); }
+.nephritis { @include theme($nephritis, white, $orange); }
+.belize-hole { @include theme($belize-hole); }
+.wisteria { @include theme($wisteria, white, $orange); }
+.midnight-blue { @include theme($midnight-blue, white, $orange); }
+.sunflower { @include theme($sunflower); }
+.carrot { @include theme($carrot); }
+.alizarin { @include theme($alizarin, white, $silver); }
+.clouds {  @include theme($clouds, black); }
+.concrete { @include theme($concrete); }
+.orange { @include theme($orange); }
+.pumpkin { @include theme($pumpkin, white, $silver); }
+.pomegranite { @include theme($pomegranite, white, $silver); }
+.silver { @include theme($silver);  }
+.asbestos { @include theme($asbestos); }
