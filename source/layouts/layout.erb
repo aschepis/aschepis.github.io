@@ -58,6 +58,9 @@
               <a href="https://github.com/aschepis" class="about">
                 <i class="fa fa-github"></i>
               </a>
+              <a href="https://twitter/aschepis" class="about">
+                <i class="fa fa-twitter"></i>
+              </a>
             </div>
           </nav>
 
@@ -66,7 +69,11 @@
             <h3 class="author-info">Written by Adam Schepis</h3>
             <h3 class="published-date">Originally Published <%= article.date %></h3>
             <div class="post-actions">
-              <a href="#" class="toggle-comments"><i class="octicon octicon-comment-discussion"></i> (leave your thoughts)</a>
+              <a href="#"
+                 class="toggle-comments"
+                 onclick="loadDisqus(jQuery(this), '<%= article.url %>', 'http://adamschepis.com<%= article.url %>');">
+                <i class="octicon octicon-comment-discussion"></i> (leave your thoughts)
+              </a>
             </div>
             <div class="post-body" data-url="<%=article.url%>">
               <% if article.url == current_page.url %>
@@ -79,7 +86,10 @@
           <div class="post-content" tabindex="0">
             <h1 class="subtitle">Comments on "<%=article.title%>"</h1>
             <div class="post-actions">
-              <a href="#" class="toggle-comments"><i class="octicon octicon-mail-reply"></i> Back to the article.</a>
+              <a href="#" onclick="clearDisqus(jQuery(this));" class="toggle-comments"><i class="octicon octicon-mail-reply"></i> Back to the article.</a>
+              <div class="comments"></div>
+            </div>
+            <div>
             </div>
           </div>
         </div>
@@ -93,7 +103,7 @@
       <% blog.articles.each do |article| %>
       <% unless article.url == current_page.url %>
       {
-        var iframe = dynframe('/raw-content<%=article.url%>');
+        var iframe = dynframe('/raw-content<%=article.url.gsub(/\.html$/, '')%>');
         $('body').append(iframe);
         iframe.one('load', function() {
           var html = $(this).contents().find('body').html()
@@ -104,5 +114,39 @@
       <% end %>
       <% end %>
     });
+  </script>
+  <script type="text/javascript">
+    var disqus_shortname = 'aschepis';
+    var disqus_identifier;
+    var disqus_url; //post permalink
+
+    function clearDisqus(source) {
+      source.closest('.page-back.flipped').find('.comments').html('');
+    }
+    function loadDisqus(source, identifier, url) {
+      source = jQuery(source.closest('.page-container').find('.page-back.flipped .comments'))
+      if (window.DISQUS) {
+        jQuery('#disqus_thread').insertAfter(source); //append the HTML after the link
+
+        //if Disqus exists, call it's reset method with new parameters
+        DISQUS.reset({
+          reload: true,
+          config: function () {
+            this.page.identifier = identifier;
+            this.page.url = url;
+          }
+        });
+      } else {
+        //insert a wrapper in HTML after the relevant "show comments" link
+        jQuery('<div id="disqus_thread"></div>').insertAfter(source);
+        disqus_identifier = identifier; //set the identifier argument
+        disqus_url = url; //set the permalink argument
+
+        //append the Disqus embed script to HTML
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        jQuery('head').append(dsq);
+      }
+    };
   </script>
 </html>

@@ -97,6 +97,7 @@ GEM
     rack (1.5.2)
     rack-livereload (0.3.15)
       rack
+    rack-rewrite (1.5.0)
     rack-test (0.6.2)
       rack (>= 1.0)
     rb-fsevent (0.9.4)
@@ -135,6 +136,7 @@ DEPENDENCIES
   middleman-blog
   middleman-deploy
   middleman-livereload (~> 3.1.0)
+  rack-rewrite (~> 1.5.0)
   redcarpet
   tzinfo-data
   wdm (~> 0.1.0)

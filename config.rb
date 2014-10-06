@@ -47,13 +47,37 @@
 #   end
 # end
 
+###### Middleware
+# use(Class.new do
+#   def initialize(app, options={})
+#     @app  = app
+#     @path = options[:path] || ::File.expand_path('../', $0)
+#   end
+
+#   def call(env)
+#     status, headers, body = @app.call(env)
+
+#     if headers['Content-Type'].to_s.include?('text/plain')
+#       headers['Content-Type'] = 'text/html'
+#     end
+
+#     [status, headers, body]
+#   end
+# end)
+
+require 'rack/rewrite'
+use Rack::Rewrite do
+  r301 /\/blog\/?(.*)/, '/$1'
+end
+######
+
 set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
+activate :directory_indexes
 activate :blog do |blog|
 end
-
 activate :deploy do |deploy|
   deploy.build_before = true # default: false
   deploy.method = :git
@@ -63,7 +87,6 @@ end
 ready do
   sitemap.resources.each do |page|
     if page.path =~ /[0-9]{4}-[0-9]{2}-[0-9]{2}-.*/
-      proxy "/blog#{page.url}", page.path, :locals => { current_article: page }
       proxy "/raw-content#{page.url}", page.path, layout: false, locals: {current_article: page}
     end
   end
