@@ -83,8 +83,8 @@ end
 ready do
   sitemap.resources.each do |page|
     if page.path =~ /[0-9]{4}-[0-9]{2}-[0-9]{2}-.*/
-      proxy "/blog#{page.url}", "/blog/redirect.html", layout: false, locals: {page: page}
-      proxy "/blog#{page.url}.html", "/blog/redirect.html", layout: false, locals: {page: page}
+      proxy "/blog#{page.url}", "/blog/redirect.html", layout: false, locals: {page: page}, ignore: true
+      proxy "/blog#{page.url}.html", "/blog/redirect.html", layout: false, locals: {page: page}, ignore: true
       proxy "/raw-content#{page.url}", page.path, layout: false, locals: {current_article: page}
     end
   end
