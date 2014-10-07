@@ -13,6 +13,7 @@ class Cube
     @$('.page-nav a.prev, .page-nav a.next').on 'click', @handleNavClick
     @$('body').on 'swipeleft', @nextPage
     @$('body').on 'swiperight', @prevPage
+    @$('body').on 'movestart', (e) -> e.preventDefault()
     @$('a.toggle-comments').on 'click', @toggleComments
     @focus()
 
