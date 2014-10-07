@@ -64,11 +64,6 @@
 #     [status, headers, body]
 #   end
 # end)
-
-require 'rack/rewrite'
-use Rack::Rewrite do
-  r301 /\/blog\/?(.*)/, '/$1'
-end
 ######
 
 set :css_dir, 'stylesheets'
@@ -84,9 +79,12 @@ activate :deploy do |deploy|
   deploy.branch = 'master'
 end
 
+
 ready do
   sitemap.resources.each do |page|
     if page.path =~ /[0-9]{4}-[0-9]{2}-[0-9]{2}-.*/
+      proxy "/blog#{page.url}", "/blog/redirect.html", layout: false, locals: {page: page}
+      proxy "/blog#{page.url}.html", "/blog/redirect.html", layout: false, locals: {page: page}
       proxy "/raw-content#{page.url}", page.path, layout: false, locals: {current_article: page}
     end
   end

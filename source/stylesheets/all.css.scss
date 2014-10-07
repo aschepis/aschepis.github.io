@@ -238,4 +238,14 @@ blockquote cite:before {
   content: "\2014 \2009";
 }
 
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-device-width : 600px) {
+  .title {
+    font-size: 2em !important;
+  }
+
+  .page i.fa {
+    font-size: 2em !important;
+  }
+}
 //@import "syntax.css";

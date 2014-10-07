@@ -1,17 +1,18 @@
 #= require vendor/jquery
-#= require vendor/jquery.detect_swipe
 #= require vendor/underscore
 #= require vendor/mousetrap
 #= require vendor/headroom
+#= require ../../bower_components/jquery.event.move/js/jquery.event.move.js
+#= require ../../bower_components/jquery.event.swipe/js/jquery.event.swipe.js
 
 class Cube
   constructor: (@$) ->
     Mousetrap.bind 'right', @nextPage
     Mousetrap.bind 'left', @prevPage
 
-    # @$('body').on 'touchstart mousedown', @startDrag
-    # @$('body').on 'touchend mouseup', @endDrag
     @$('.page-nav a.prev, .page-nav a.next').on 'click', @handleNavClick
+    @$('body').on 'swipeleft', @nextPage
+    @$('body').on 'swiperight', @prevPage
     @$('a.toggle-comments').on 'click', @toggleComments
     @focus()
 
@@ -68,24 +69,6 @@ class Cube
 
   pushState: (url) ->
     window.history.pushState(null, null, url);
-
-  startDrag: (e) =>
-    return unless e.which == 1
-    @start =
-      x: e.pageX
-      y: e.pageY
-
-  endDrag: (e) =>
-    return unless @start?
-    t = e.pageX - @start.x
-    nextEl = if t > 0 then @prevPageEl() else @nextPageEl()
-    if nextEl?
-      percentage = if t? then t / $('body').width() else 0
-      if Math.abs(percentage) > 0.33 || Math.abs(t) > 50
-        if t > 0 then @prevPage() else @nextPage()
-
-    @start = null
-    @
 
   toggleComments: (e) =>
     e.preventDefault()
