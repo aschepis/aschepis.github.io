@@ -2,8 +2,7 @@
 #= require vendor/underscore
 #= require vendor/mousetrap
 #= require vendor/headroom
-#= require ../../bower_components/jquery.event.move/js/jquery.event.move.js
-#= require ../../bower_components/jquery.event.swipe/js/jquery.event.swipe.js
+#= require ../../bower_components/jquery-touchswipe/jquery.touchSwipe.js
 
 class Cube
   constructor: (@$) ->
@@ -11,11 +10,16 @@ class Cube
     Mousetrap.bind 'left', @prevPage
 
     @$('.page-nav a.prev, .page-nav a.next').on 'click', @handleNavClick
-    @$('body').on 'swipeleft', @nextPage
-    @$('body').on 'swiperight', @prevPage
-    @$('body').on 'movestart', (e) -> e.preventDefault()
+    @$('.page').on 'swipeleft', @nextPage
+    @$('.page').on 'swiperight', @prevPage
+
+    @$('.page').swipe(allowPageScroll:"vertical", swipeLeft:@nextPage, swipeRight:@prevPage)
+
     @$('a.toggle-comments').on 'click', @toggleComments
     @focus()
+
+  swipe: (e, dir, dist, duration, fingerCount) =>
+    alert("#{dir} #{dist}")
 
   handleNavClick: (e) =>
     e.preventDefault()

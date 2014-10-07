@@ -98,8 +98,9 @@ body > nav {
     position: absolute;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    /* overflow-x: hidden; */
+    /* overflow-y: auto; */
+    overflow: hidden;
 
     @include transform-style($transform-style);
     @include transition(all 0.3s linear);
@@ -126,9 +127,11 @@ body > nav {
     position: absolute;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
     visibility: visible;
+
+    overflow:scroll;
+    -webkit-overflow-scrolling:touch;
+    overflow-x: hidden;
 
     @include transition(all 0.3s linear);
     &.flipped { opacity: 0; z-index: 4; visibility: hidden;}
