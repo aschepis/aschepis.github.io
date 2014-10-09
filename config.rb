@@ -90,6 +90,8 @@ ready do
   end
 end
 
+page "/sitemap.xml", :layout => false
+
 sprockets.append_path File.join root, 'bower_components'
 
 # Build-specific configuration

@@ -60,6 +60,7 @@ class Cube
       $currentPage.addClass('left')
       @pushState($right.attr('data-url'))
       @focus()
+      @updateMeta()
 
   prevPage: =>
     $currentPage = @currentPage()
@@ -71,6 +72,17 @@ class Cube
       $currentPage.addClass('right')
       @pushState($left.attr('data-url'))
       @focus()
+      @updateMeta()
+
+  updateMeta: ->
+    $container = $(@currentPage().closest('.page-container'))
+    description = $container.attr('data-description')
+    title = $container.attr('data-title')
+    keywords = $container.attr('data-keywords')
+
+    document.title = title
+    $("#mtdesc").attr('content', description)
+    $("#mtkeywords").attr('content', keywords)
 
   pushState: (url) ->
     window.history.pushState(null, null, url);
