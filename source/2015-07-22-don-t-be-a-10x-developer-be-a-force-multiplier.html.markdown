@@ -30,8 +30,8 @@ a great mentor to any junior engineers I work with.
 
 There is some research that indicates that the most productive developers
 are 10x more productive than their average counterparts (see
-[The 10x Developer is NOT  a myth](http://www.ybrikman.com/writing/2013/09/29/the-10x-developer-is-not-myth/)
-for some context and one opinion on the matter.
+[The 10x Developer is NOT a myth](http://www.ybrikman.com/writing/2013/09/29/the-10x-developer-is-not-myth/)
+for some context and one opinion on the matter.)
 
 Whether you believe in the 10x developer or not, I believe that there is an even more
 important trait to strive for and develop in other software engineers.
