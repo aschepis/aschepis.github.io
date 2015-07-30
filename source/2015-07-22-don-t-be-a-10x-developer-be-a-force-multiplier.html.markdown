@@ -16,7 +16,7 @@ color_scheme: green-sea
 ---
 
 [CloudHealth](http://www.cloudhealthtech.com/) is growing really fast and on the
-engineering team we have reach the size where we are starting to bring in more
+engineering team we have reached the size where we are starting to bring in more
 junior developers. For us this means developers who have great talent and ability
 but are just out of school or recently out of school. I like to say that these
 girls and guys have horsepower.
