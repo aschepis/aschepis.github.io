@@ -12,16 +12,20 @@ hero_media = "/img/headshot.png"
 	# The url of the button
   url = "/about"
 	# The text of the button
-  label = "Know more"
+  label = "About me"
 	# Primary color
 	primary = true
 
 [[btn]]
-  url = "#contact"
-  label = 'Contact me'
+  url = "#bars"
+  label = "Skills"
+
+[[btn]]
+  url = "#timeline"
+  label = "Experience"
 
 +++
 
-# My name is **Adam Schepis** and I'm a **Software Engineer**.
+# My name is **Adam Schepis**, although I'm known to many as **Optimist Prime**.
 
-All my dishes are made with love
+I also happen to be a father, husband, and software engineer.

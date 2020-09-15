@@ -28,42 +28,35 @@ favicon = '/favicon.png'
 alt = "email icon"
 icon = "/icons/email.svg"
 name = "email"
-url = "mailto:mail@example.com"
+url = "mailto:adam.schepis@gmail.com"
 
 [[params.social]]
 alt = "github icon"
 blank = true
 icon = "/icons/github.svg"
 name = "github"
-url = "https://github.com/"
+url = "https://github.com/aschepis"
 
 [[params.social]]
 alt = "medium icon"
 blank = true
 icon = "/icons/medium.svg"
 name = "medium"
-url = "https://medium.com/"
+url = "https://medium.com/@aschepis"
 
 [[params.social]]
 alt = "stack-overflow icon"
 blank = true
 icon = "/icons/stack-overflow.svg"
 name = "stack-overflow"
-url = "https://stackoverflow.com/"
+url = "https://stackoverflow.com/users/327737/aschepis"
 
 [[params.social]]
 alt = "twitter icon"
 blank = true
 icon = "/icons/twitter.svg"
 name = "twitter"
-url = "https://twitter.com/"
-
-[[params.social]]
-alt = "facebook icon"
-blank = true
-icon = "/icons/facebook.svg"
-name = "facebook"
-url = "https://facebook.com/"
+url = "https://twitter.com/aschepis"
 
 # Navigation bar
 [menu]
@@ -80,11 +73,11 @@ pre = "" # pre is inserted before the translation (icons, image, etc)
 url = "/blog/"
 weight = 20
 
-[[menu.main]]
-identifier = "contact" # identifier is use for translations
-pre = "" # pre is inserted before the translation (icons, image, etc)
-url = "/#contact"
-weight = 30
+# [[menu.main]]
+# identifier = "contact" # identifier is use for translations
+# pre = "" # pre is inserted before the translation (icons, image, etc)
+# url = "/#contact"
+# weight = 30
 
 # Syntax highlightning
 [markup.highlight]

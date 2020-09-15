@@ -3,7 +3,7 @@
 # This section displays recent blog posts from `content/post/`.
 
 widget = "pages"  # See https://sourcethemes.com/academic/docs/page-builder/
-weight = 50  # Order that this section will appear.
+weight = 20  # Order that this section will appear.
 
 title = "Recent Posts"
 subtitle = "Read about my latest projects"
