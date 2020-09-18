@@ -1,7 +1,7 @@
 +++
 title = "About me"
 
-type = "blog"
+type = "content"
 +++
 
 # The beginning

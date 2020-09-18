@@ -14,6 +14,6 @@ figure.about-me img {
     width: 60%;
 }
 
-/* figure.float-right img { */
-/*     float: right; */
-/* } */
+.banner-credit a {
+    display: inline;
+}
