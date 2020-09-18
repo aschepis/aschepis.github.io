@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>family on A Work in Progress</title>
+    <link>http://adamschepis.com/tags/family/</link>
+    <description>Recent content in family on A Work in Progress</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 15 Sep 2011 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://adamschepis.com/tags/family/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Why I Go Home</title>
+      <link>http://adamschepis.com/blog/why-i-go-home-a-dads-manifesto/</link>
+      <pubDate>Thu, 15 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://adamschepis.com/blog/why-i-go-home-a-dads-manifesto/</guid>
+      <description>TL;DR I love my job, I love my career, I love solving hard problems, and I love crafting great software. Just not as much as a I love my daughter.
+When I was younger, i was one of the developers who would get to work early, code all day, leave the office after everybody else, and then get back online and code at night. It didn&amp;rsquo;t matter what I was coding on, I just wanted to be coding.</description>
+    </item>
+    
+  </channel>
+</rss>

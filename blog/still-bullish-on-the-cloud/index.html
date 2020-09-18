@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name=viewport content="width=device-width, initial-scale=1">
+
+<meta name="description" content="Still Bullish on the Cloud" />
+
+<title>
+	A Work in Progress
+	 - Still Bullish on the Cloud 
+</title>
+
+
+
+<link rel="icon" href="/favicon.png">
+
+	
+
+
+
+
+
+<link rel="stylesheet" href="http://adamschepis.com/css/main.min.f5fb411b13fc3c91a7d72d5ee9b9ac3a.css" crossorigin="anonymous" media="screen"
+	integrity="md5-9ftBGxP8PJGn1y1e6bmsOg==">
+
+
+
+
+
+
+<link rel="stylesheet" href="http://adamschepis.com/css/syntax.min.bb1b567de4651428ffd1a37a1d2bfba6.css" crossorigin="anonymous"
+	integrity="md5-uxtWfeRlFCj/0aN6HSv7pg==" media="screen">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="http://adamschepis.com/style/style.min.d9744f018b2ad572d0fba0e769d16f78.css" crossorigin="anonymous" media="screen"
+	integrity="md5-2XRPAYsq1XLQ+6DnadFveA==">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="http://adamschepis.com/css/main.min.d5d46344e3b621a3e3a173927106f45d.css" crossorigin="anonymous" media="screen"
+	integrity="md5-1dRjROO2IaPjoXOScQb0XQ==">
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+<script src="http://adamschepis.com/js/pico.min.0c87ee6124671e6a6caffc5953bef38a.js" intergrity="md5-DIfuYSRnHmpsr/xZU77zig==" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body class="min-h-screen bg-white relative pb-24">
+	<div id="top"></div>
+
+<header class="w-full flex items-center justify-between px-5 mx-auto md:max-w-5xl pt-2 md:pt-0">
+	
+	<div class="flex items-center">
+		<a href="http://adamschepis.com/" class="inline-block font-bold no-underline select-none">
+			<h1 class="hidden md:block font-charter tracking-normal m-0">
+				A Work in Progress
+			</h1>
+
+			<div class="md:hidden">
+				<div class="w-8 h-8 relative font-bold bg-white blend-diff">
+	<h1 class="absolute-center m-0 font-charter text-gray-100 blend-diff select-none">
+		A
+	</h1>
+</div>
+			</div>
+		</a>
+		
+	</div>
+
+	<nav class="">
+		
+		<a href="/" class='mx-1 md:mx-2 hover:text-black no-underline'>
+			 Home
+		</a>
+		
+		<a href="/blog/" class='mx-1 md:mx-2 hover:text-black no-underline'>
+			 Blog
+		</a>
+		
+		<a href="/about/" class='mx-1 md:mx-2 hover:text-black no-underline'>
+			 About
+		</a>
+		
+	</nav>
+</header>
+	
+
+	<main class="w-full px-4 pt-8 mx-auto md:max-w-3xl overflow-x-hidden md:overflow-visible ">
+<button onclick="window.history.back()"
+	class="bg-transparent border-none font-bold">&larr;Back</button>
+<h1 class="text-center mx-auto max-w-4xl text-4xl sm:text-5xl md:text-6xl">
+	Still Bullish on the Cloud
+</h1>
+
+<div class="leading-loose mb-12 text-lg">
+	<p>Over the past few weeks we&rsquo;ve witnessed a couple of big outages in the
+cloud computer world. First there was the
+
+
+
+
+
+<a href="http://aws.amazon.com/message/65648/" 
+	class="underline "  target="_blank" rel="noopener"
+	>
+	downtime on Amazon&rsquo;s EC2 infrastructure
+</a>,
+and then this week there was the
+
+
+
+
+
+<a href="http://buzz.blogger.com/2011/05/blogger-is-back.html" 
+	class="underline "  target="_blank" rel="noopener"
+	>
+	Blogger outage
+</a>
+on Google&rsquo;s infrastructure. These high profile outages, coupled with
+the slightly different but orders of magnitude more damaging
+Playstation Network outage have gotten some people questioning the
+wisdom of building or moving services into the cloud,
+
+
+
+
+
+<a href="http://www.nytimes.com/2011/04/23/technology/23cloud.html?_r=1" 
+	class="underline "  target="_blank" rel="noopener"
+	>
+	including the New York Times
+</a>.</p>
+<p>I&rsquo;m still incredibly bullish on cloud-hosted services and the power
+and potential of the cloud. There are two fundamental reasons
+why. First, the cloud is The Great Leveler. Not since the advent of
+the personal computer has the playing field been leveled so
+significantly. If you come up with the idea for the next Facebook or
+Google you can bootstrap it for a tiny fraction of what buying the
+required hardware would have cost you. As your service grows, you can
+scale. You can compete with anybody in the world for handling user
+traffic on day 1.</p>
+<p>The second reason is that while I discovered that AWS Availability
+Zones aren&rsquo;t quite as separated as I thought (EBS control plane is
+shared per-region, but distributed across AZs in the region) there
+were many websites who survived the outage came to little or no harm
+(namely Twilio, Netflix.) The outage at EC2 makes the case for cloud
+computing, it doesn&rsquo;t damn. High Availability 101 says that you can&rsquo;t
+have a single point of failure. The services that went down were
+primarily in a single Availability Zone on AWS. If you have everything
+running in a single AZ then you are asking for trouble. You have to
+assume failure. Netflix takes this to the extreme with their
+
+
+
+
+
+<a href="http://techblog.netflix.com/2010/12/5-lessons-weve-learned-using-aws.html" 
+	class="underline "  target="_blank" rel="noopener"
+	>
+	Chaos Monkey
+</a>.</p>
+<p>Furthermore, the cloud is still evolving. One thing that I think that
+we will see developing as an extension of some current endeavors, and
+as a result of these recent outages, is the &ldquo;meta-cloud&rdquo;
+provider. Companies like RightScale are already playing in this
+space. I think that they should start building technology to abstract
+away the cloud provider entirely and create a market for compute
+resources. They can run your service on EC2 if thats where they are
+getting the best combination of cost and performance (think: spot
+instances) or they could bring it up on RackSpace&rsquo;s cloud if the best
+price and performance is there. They could utilize many providers to
+get better performance (routing users to datacenters closest to them.)
+They could also bring your service up in multiple cloud providers to
+add an even higher level of availability and redundancy, or switch
+your provider if an anomaly or outage is detected where you are
+currently hosted.</p>
+
+</div>
+
+
+<hr class="mb-6 mt-24">
+
+
+<div class="flex flex-wrap justify-between items-center">
+	
+	<div class=" w-full sm:w-1/2  mb-1 text-center sm:text-left overflow-ellipsis pr-1">
+		<a class="mr-4 no-underline" href="http://adamschepis.com/blog/im-adam-and-im-a-recovering-singleton-addict/">
+			<img src="/icons/top_arrow.svg" class="transform -rotate-90 inline-block">
+		</a>
+		<a href="http://adamschepis.com/blog/im-adam-and-im-a-recovering-singleton-addict/">
+			<span class="underline">I&#39;m Adam, and i&#39;m a recovering Singleton addict.</span>
+		</a>
+	</div>
+	
+
+	
+	<div
+		class=" w-full sm:w-1/2  mt-1 text-center sm:text-right overflow-ellipsis pl-1">
+		<a href="http://adamschepis.com/blog/of-heroes-and-pit-crews-bringing-techniques-from-the-surgical-world-to-software/">
+			<span class="underline">Of Heroes and Pit Crews</span>
+		</a>
+		<a class="ml-4 no-underline" href="http://adamschepis.com/blog/of-heroes-and-pit-crews-bringing-techniques-from-the-surgical-world-to-software/">
+			<img src="/icons/top_arrow.svg" class="transform rotate-90 inline-block">
+		</a>
+	</div>
+	
+</div>
+
+<hr class="my-6">
+<div class="flex justify-center items-center flex-wrap">
+	
+	<a href="mailto:adam.schepis@gmail.com" title="email"
+		class="bg-black rounded-full p-3 mx-2 my-2 transform hover:scale-110 active:scale-90 transition-transform duration-300 ease-in-out"
+		 >
+		<img src="/icons/email.svg" alt="email icon" class="w-4 h-4 md:w-6 md:h-6">
+	</a>
+	
+	<a href="https://github.com/aschepis" title="github"
+		class="bg-black rounded-full p-3 mx-2 my-2 transform hover:scale-110 active:scale-90 transition-transform duration-300 ease-in-out"
+		 target="_blank"   rel="noopener" >
+		<img src="/icons/github.svg" alt="github icon" class="w-4 h-4 md:w-6 md:h-6">
+	</a>
+	
+	<a href="https://medium.com/@aschepis" title="medium"
+		class="bg-black rounded-full p-3 mx-2 my-2 transform hover:scale-110 active:scale-90 transition-transform duration-300 ease-in-out"
+		 target="_blank"   rel="noopener" >
+		<img src="/icons/medium.svg" alt="medium icon" class="w-4 h-4 md:w-6 md:h-6">
+	</a>
+	
+	<a href="https://stackoverflow.com/users/327737/aschepis" title="stack-overflow"
+		class="bg-black rounded-full p-3 mx-2 my-2 transform hover:scale-110 active:scale-90 transition-transform duration-300 ease-in-out"
+		 target="_blank"   rel="noopener" >
+		<img src="/icons/stack-overflow.svg" alt="stack-overflow icon" class="w-4 h-4 md:w-6 md:h-6">
+	</a>
+	
+	<a href="https://twitter.com/aschepis" title="twitter"
+		class="bg-black rounded-full p-3 mx-2 my-2 transform hover:scale-110 active:scale-90 transition-transform duration-300 ease-in-out"
+		 target="_blank"   rel="noopener" >
+		<img src="/icons/twitter.svg" alt="twitter icon" class="w-4 h-4 md:w-6 md:h-6">
+	</a>
+	
+</div>
+<div class="mt-6"></div>
+
+
+	</main>
+
+	<div class="absolute bottom-0 w-full"><footer class="w-full h-24 text-center text-xs text-gray-400 bg-black relative">
+	<div class="w-full px-6 md:pt-0 md:mx-auto md:max-w-5xl flex flex-1 space-between items-center absolute-center">
+		<a href="http://adamschepis.com/" class="absolute">
+			<div class="w-8 h-8 relative font-bold bg-white blend-diff">
+	<h1 class="absolute-center m-0 font-charter text-gray-100 blend-diff select-none">
+		A
+	</h1>
+</div>
+		</a>
+
+		<div class="h-full flex-1">
+			<span class="select-none">Designed by
+				<a href="https://github.com/negrel/" class="text-gray-400 hover:text-gray-200 no-underline">negrel</a>
+			</span>
+		</div>
+	</div>
+</footer>
+	</div>
+</body>
+
+</html>

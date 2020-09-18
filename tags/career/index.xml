@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>career on A Work in Progress</title>
+    <link>http://adamschepis.com/tags/career/</link>
+    <description>Recent content in career on A Work in Progress</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 20 Oct 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://adamschepis.com/tags/career/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Best Year Ever</title>
+      <link>http://adamschepis.com/blog/best-year-ever/</link>
+      <pubDate>Tue, 20 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://adamschepis.com/blog/best-year-ever/</guid>
+      <description>Today marks my 1 year anniversary at CloudHealth Technologies . This last year has been a whirlwind to say the least. While today marks the anniversary of my start date at CloudHealth the story actually begins several months earlier.
+In 2014 I was working at Springboard Retail  who, I might add, are doing some awesome things in the retail space. On June 24, 2014 I got a message on Stack Overflow Careers  from a guy named Joe Kinsella  wondering if I might be interested in exploring opportunities at his startup.</description>
+    </item>
+    
+    <item>
+      <title>Don&#39;t be a 10x developer</title>
+      <link>http://adamschepis.com/blog/don-t-be-a-10x-developer-be-a-force-multiplier/</link>
+      <pubDate>Wed, 22 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://adamschepis.com/blog/don-t-be-a-10x-developer-be-a-force-multiplier/</guid>
+      <description>CloudHealth  is growing really fast and on the engineering team we have reached the size where we are starting to bring in more junior developers. For us this means developers who have great talent and ability but are just out of school or recently out of school. I like to say that these girls and guys have horsepower.
+Junior developers are not a blank slate, but they are about as close as you get in our industry.</description>
+    </item>
+    
+    <item>
+      <title>The Gloves are Off</title>
+      <link>http://adamschepis.com/blog/the-gloves-are-off/</link>
+      <pubDate>Wed, 25 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://adamschepis.com/blog/the-gloves-are-off/</guid>
+      <description>This morning at CloudHealth  we had the best sprint retrospective we&amp;rsquo;ve had during my entire tenure (5 months already!?) Let me tell you why.
+The sprint itself was really productive. We delivered a lot of value to our customers, we responded promptly to customer issues, and we moved ourselves forward strategically. That being said, no codebase, process, product, or engineer is perfect. We&amp;rsquo;ve all go our strengths, weaknesses, tendencies, and pet peeves.</description>
+    </item>
+    
+    <item>
+      <title>Keeping Pace</title>
+      <link>http://adamschepis.com/blog/keeping-pace/</link>
+      <pubDate>Tue, 23 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://adamschepis.com/blog/keeping-pace/</guid>
+      <description>I&amp;rsquo;ve been at my new job at CloudHealth Technologies  for about two months now. I feel incredibly grateful to be able to work with such a talented team and to have the opportunity to tackle hard problems in an increasingly interesting space. Additionally, I&amp;rsquo;ve learned a few things over the past 60 days now that i&amp;rsquo;ve switched from being a consumer of cloud services to a provider of value on top of cloud services.</description>
+    </item>
+    
+    <item>
+      <title>Why I Go Home</title>
+      <link>http://adamschepis.com/blog/why-i-go-home-a-dads-manifesto/</link>
+      <pubDate>Thu, 15 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://adamschepis.com/blog/why-i-go-home-a-dads-manifesto/</guid>
+      <description>TL;DR I love my job, I love my career, I love solving hard problems, and I love crafting great software. Just not as much as a I love my daughter.
+When I was younger, i was one of the developers who would get to work early, code all day, leave the office after everybody else, and then get back online and code at night. It didn&amp;rsquo;t matter what I was coding on, I just wanted to be coding.</description>
+    </item>
+    
+  </channel>
+</rss>

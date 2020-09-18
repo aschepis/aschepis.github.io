@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>code on A Work in Progress</title>
+    <link>http://adamschepis.com/tags/code/</link>
+    <description>Recent content in code on A Work in Progress</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 30 Apr 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://adamschepis.com/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Integrating Heroku addon SSO in Rails using Devise</title>
+      <link>http://adamschepis.com/blog/heroku-addon-sso-in-rails-using-devise/</link>
+      <pubDate>Mon, 30 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://adamschepis.com/blog/heroku-addon-sso-in-rails-using-devise/</guid>
+      <description>I was going through the process of integrating Heroku  SSO with the addon I am developing and although it was pretty straightforward I was surprised that I couldn&amp;rsquo;t find an existing gem that would add this functionality to Devise .
+Once I had it all working in my rails app via a custom Warden strategy I decided that I would extract it into a Rails engine and commit it to Github so that maybe others can use it.</description>
+    </item>
+    
+    <item>
+      <title>Break the Build!</title>
+      <link>http://adamschepis.com/blog/break-the-build/</link>
+      <pubDate>Tue, 19 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://adamschepis.com/blog/break-the-build/</guid>
+      <description>The Scream Doll &amp;ndash; Our token object of shame, given to build breakers.  I was just having a conversation with a colleague and he was telling me about how the bug count on one of our projects skyrocketed overnight (during the last week of a cycle) because QA finally looked at the output of our static analysis (Java findbugs) and logged defects on all the medium and high priority errors.</description>
+    </item>
+    
+    <item>
+      <title>Drinking from a Firehose</title>
+      <link>http://adamschepis.com/blog/drinking-from-a-firehose/</link>
+      <pubDate>Mon, 27 Jun 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://adamschepis.com/blog/drinking-from-a-firehose/</guid>
+      <description>Whenever I interview a person for an open position I always ask the person how they keep up-to-date and keep their knowledge set relevant with industry trends and new technologies. The answer can tell you a lot about the person across the table from you, and the beauty of the question is that it gives you lots of opportunity for follow-up questions so its easy to determine if the candidate is being honest.</description>
+    </item>
+    
+    <item>
+      <title>I&#39;m Adam, and i&#39;m a recovering Singleton addict.</title>
+      <link>http://adamschepis.com/blog/im-adam-and-im-a-recovering-singleton-addict/</link>
+      <pubDate>Mon, 02 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://adamschepis.com/blog/im-adam-and-im-a-recovering-singleton-addict/</guid>
+      <description>My name is Adam, and i&amp;rsquo;m a recovering Singleton addict. There, i&amp;rsquo;ve said it. I used to use singletons all the time because they make doing some things, like sharing state globally, incredibly convenient. My code was littered with XYZManager classes. The defining trait of these classes was the static GetInstance() method that magically enabled me to get access to that object and its state wherever I wanted!! What a great idea, right?</description>
+    </item>
+    
+  </channel>
+</rss>
