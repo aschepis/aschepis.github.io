@@ -1,0 +1,19 @@
+/* Example css file */
+
+/* body {
+	background-color: white!important;
+} */
+
+.timeline-icon {
+    width: 15%;
+    float: left;
+    margin-right: 10px;
+}
+
+figure.about-me img {
+    width: 60%;
+}
+
+.banner-credit a {
+    display: inline;
+}
