@@ -6,10 +6,20 @@
     <description>Recent content on A Work in Progress</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 20 Oct 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2020 09:14:40 -0400</lastBuildDate>
     
 	<atom:link href="http://adamschepis.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Being a mentor</title>
+      <link>http://adamschepis.com/blog/mentoring/</link>
+      <pubDate>Mon, 28 Sep 2020 09:14:40 -0400</pubDate>
+      
+      <guid>http://adamschepis.com/blog/mentoring/</guid>
+      <description>I have always considered myself a good and willing mentor for younger engineers but I have never been a formal mentor for anyone. Recently I was offered the opporunity to formally mentor a promising younger engineer and I was happy to accept.
+After I accepted my first thought was &amp;ldquo;ok, now what am I going to do?&amp;rdquo; I thought back to my earlier days as an engineer and what my mentors taught me as well as what I wished I had from a mentor.</description>
+    </item>
     
     <item>
       <title>Best Year Ever</title>
