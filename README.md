@@ -32,5 +32,5 @@ Source: GitHub Actions**.
 
 ## DNS
 
-`adamschepis.com` points at GitHub Pages with four A records (IPv4), four AAAA
-records (IPv6) at the apex, and a CNAME for `www`. See [DNS.md](DNS.md).
+`adamschepis.com` isn't pointed here yet — it needs apex A records at GoDaddy and
+a one-time domain verification on the GitHub account. See [DNS.md](DNS.md).

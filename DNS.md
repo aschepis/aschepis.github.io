@@ -1,73 +1,103 @@
 # Pointing adamschepis.com at GitHub Pages
 
-Do these in order. Step 1 is at your domain registrar / DNS host, step 2 is on GitHub.
+The site is live at **https://aschepis.github.io/**. Three things stand between
+that and `adamschepis.com`. Do them in order — step 1 is required before step 3
+will be accepted.
 
-## 1. Records to add
+DNS for this domain is at **GoDaddy** (`ns49/ns50.domaincontrol.com`), so the
+records below go in GoDaddy's DNS manager:
+`godaddy.com` → Domain Portfolio → `adamschepis.com` → **DNS** → Manage Zone.
 
-At the **apex** (`adamschepis.com`, sometimes shown as `@` or blank host), add
-four `A` records — all four, they're GitHub's load balancer:
+## Current state
 
-| Type | Host | Value           | TTL  |
-|------|------|-----------------|------|
-| A    | @    | 185.199.108.153 | 3600 |
-| A    | @    | 185.199.109.153 | 3600 |
-| A    | @    | 185.199.110.153 | 3600 |
-| A    | @    | 185.199.111.153 | 3600 |
+| Record                | Now                          | Needs to be                |
+|-----------------------|------------------------------|----------------------------|
+| `adamschepis.com` (@) | *no A records*               | four GitHub A records       |
+| `www`                 | CNAME → `aschepis.github.io.` | already correct — leave it |
 
-And the IPv6 equivalents (optional but recommended):
+So the apex is the only DNS record actually missing.
 
-| Type | Host | Value                | TTL  |
-|------|------|----------------------|------|
-| AAAA | @    | 2606:50c0:8000::153  | 3600 |
-| AAAA | @    | 2606:50c0:8001::153  | 3600 |
-| AAAA | @    | 2606:50c0:8002::153  | 3600 |
-| AAAA | @    | 2606:50c0:8003::153  | 3600 |
+## 1. Verify the domain on your GitHub account (required here)
 
-For `www`, one CNAME:
+GitHub currently refuses `adamschepis.com` as a custom domain: *"already taken"*
+— some other Pages site (likely an old, since-forgotten one) still has it
+configured. Verifying ownership releases it to you and blocks future takeovers.
 
-| Type  | Host | Value                 | TTL  |
-|-------|------|-----------------------|------|
-| CNAME | www  | aschepis.github.io.   | 3600 |
+1. Go to **https://github.com/settings/pages** → **Add a domain**.
+2. Enter `adamschepis.com`. GitHub shows a TXT record like:
+
+   | Type | Host                                  | Value                    |
+   |------|---------------------------------------|--------------------------|
+   | TXT  | `_github-pages-challenge-aschepis`    | *(the token GitHub shows)* |
+
+3. Add that TXT record at GoDaddy, wait a minute, then click **Verify**.
+
+Check it landed before hitting Verify:
+
+```sh
+dig +short TXT _github-pages-challenge-aschepis.adamschepis.com
+```
+
+## 2. Add the apex A records at GoDaddy
+
+All four — they're GitHub's load balancer, not alternatives:
+
+| Type | Name | Value           | TTL |
+|------|------|-----------------|-----|
+| A    | @    | 185.199.108.153 | 1h  |
+| A    | @    | 185.199.109.153 | 1h  |
+| A    | @    | 185.199.110.153 | 1h  |
+| A    | @    | 185.199.111.153 | 1h  |
+
+IPv6, optional but recommended — same `@` host:
+
+```
+AAAA  @  2606:50c0:8000::153
+AAAA  @  2606:50c0:8001::153
+AAAA  @  2606:50c0:8002::153
+AAAA  @  2606:50c0:8003::153
+```
 
 Two things that commonly break this:
 
-- **Delete any existing A / AAAA / ALIAS / CNAME at the apex first** (parking
-  pages and registrar "forwarding" records both count). Conflicting apex records
-  are the usual cause of the site not resolving.
-- **Do not** CNAME the apex to `aschepis.github.io` unless your DNS host offers
-  ALIAS/ANAME flattening. A plain CNAME at the apex is invalid and will break MX
-  (email) for the domain.
+- **Delete any other record at `@` first.** GoDaddy ships a parking A record
+  (often `Parked` / `_domainconnect`) and any "Forwarding" rule set on the domain
+  will fight these. Conflicting apex records are the usual cause of the site not
+  resolving.
+- **Don't CNAME the apex.** A plain CNAME at `@` is invalid and breaks email for
+  the domain. The A records above are the supported way to point an apex at Pages.
 
-## 2. Set the custom domain on GitHub
+## 3. Set the custom domain on the repo
 
-`public/CNAME` already contains `adamschepis.com`, so the deploy tells Pages the
-domain. Confirm at **Settings → Pages** on `aschepis/aschepis.github.io`:
-
-- Custom domain: `adamschepis.com`
-- Wait for the DNS check to go green (minutes to an hour after the records
-  propagate), then tick **Enforce HTTPS**. The certificate is issued by GitHub
-  via Let's Encrypt and renews automatically — it can't be issued until DNS
-  resolves, so this checkbox stays greyed out until step 1 lands.
-
-## 3. Verify
+Once step 1 verifies, go to
+**https://github.com/aschepis/aschepis.github.io/settings/pages** → Custom domain
+→ `adamschepis.com` → Save. Or from the terminal:
 
 ```sh
-dig +short adamschepis.com            # → the four 185.199.x.153 addresses
-dig +short www.adamschepis.com        # → aschepis.github.io + those addresses
-curl -sI https://adamschepis.com | head -1   # → HTTP/2 200
+gh api -X PUT repos/aschepis/aschepis.github.io/pages -f cname=adamschepis.com
 ```
 
-Propagation is usually minutes, but allow up to 24h if the old records had a
-long TTL.
+Then wait for the DNS check to go green and tick **Enforce HTTPS**. The
+certificate comes from Let's Encrypt via GitHub and renews itself; the checkbox
+stays greyed out until the A records in step 2 resolve.
 
-## Note while DNS is pending
+`public/CNAME` in this repo already contains `adamschepis.com`, so the setting
+stays consistent across deploys.
 
-Once a custom domain is set, `https://aschepis.github.io` **301-redirects** to
-`https://adamschepis.com`. That's expected — the site will look broken from the
-github.io URL until the DNS records above resolve.
+## 4. Verify
 
-## Optional: domain verification
+```sh
+dig +short adamschepis.com                    # → the four 185.199.x.153 addresses
+curl -sI https://adamschepis.com | head -1    # → HTTP/2 200
+curl -sI https://www.adamschepis.com | head -1 # → 301 to the apex
+```
 
-**GitHub → Settings → Pages → Add a domain** gives you a `_github-pages-challenge-aschepis`
-TXT record to add. Verifying stops anyone else from taking over the domain on
-Pages if the repo is ever deleted. Not required for the site to work.
+Propagation is usually minutes. GoDaddy's default TTL is 1 hour, so allow that
+long; certificate issuance can add another 15–30 minutes after DNS resolves.
+
+## Note while this is pending
+
+Once the custom domain is set (step 3), `https://aschepis.github.io` starts
+**301-redirecting** to `https://adamschepis.com`. If you do step 3 before step 2,
+the site will look broken from both URLs until the A records land. Doing them in
+order avoids that window.
