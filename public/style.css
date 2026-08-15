@@ -59,11 +59,24 @@ body {
   border-top: 1px solid var(--hair);
 }
 
+/* The tagline is short enough to set as three stacked lines, not a paragraph. */
 .lede {
   margin: clamp(1.5rem, 4vh, 2.25rem) 0 0;
   max-width: 30rem;
-  text-wrap: pretty;
+  font-size: 1.15em;
+  line-height: 1.4;
 }
+
+.lede__line { display: block; }
+
+.lede__mark {
+  display: block;
+  margin-bottom: 0.55rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+}
+
+.lede__line + .lede__line { color: var(--muted); }
 
 .contact {
   margin-top: clamp(2.5rem, 7vh, 4rem);
