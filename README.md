@@ -15,6 +15,20 @@ public/          # everything that gets published
 
 Edit `public/index.html` for copy, `public/style.css` for type and color.
 
+### The contact address
+
+The email never appears in the markup. The visible text spells out `at` and
+`dot`, and the real `mailto:` is XOR-encoded (key `42`, hex) in the `data-c`
+attribute on `.address`, decoded by a small inline script only when someone
+clicks. To change the address, regenerate that attribute:
+
+```sh
+python3 -c "print(''.join('%02x' % (ord(c) ^ 42) for c in 'mailto:you@example.com'))"
+```
+
+Keep the visible spelled-out text in sync by hand — nothing derives one from the
+other on purpose.
+
 ## Preview locally
 
 ```sh

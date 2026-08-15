@@ -29,10 +29,33 @@
 
     <section class="contact">
       <h2 class="eyebrow">Contact</h2>
-      <p class="address">
-        <a href="mailto:adam.schepis@gmail.com">adam.schepis@gmail.com</a>
+      <p class="address" data-c="474b43465e45104b4e4b47045949424f5a43596a4d474b434604494547">
+        adam.schepis <span class="address__sep">at</span> gmail <span class="address__sep">dot</span> com
       </p>
     </section>
   </main>
+
+  <script>
+    // The address is never written out in full here. It's XOR-encoded above and
+    // assembled only when someone actually clicks, so harvesters reading the
+    // page get the spelled-out version and nothing to copy.
+    (function () {
+      var el = document.querySelector('.address');
+      if (!el || !el.dataset.c) return;
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'address__link';
+      btn.title = 'Open your mail app';
+      btn.innerHTML = el.innerHTML.trim();
+      btn.addEventListener('click', function () {
+        location.href = el.dataset.c.match(/../g).map(function (h) {
+          return String.fromCharCode(parseInt(h, 16) ^ 42);
+        }).join('');
+      });
+
+      el.replaceChildren(btn);
+    })();
+  </script>
 </body>
 </html>
