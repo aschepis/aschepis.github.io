@@ -40,3 +40,9 @@ python3 -m http.server -d public 8000
 
 Every push to `main` runs `.github/workflows/pages.yml`, which uploads `public/`
 as a Pages artifact and deploys it. No `gh-pages` branch involved.
+
+## DNS
+
+`adamschepis.com` points here: the domain is verified, the apex A records
+resolve, and the site serves. The Let's Encrypt certificate is still pending, so
+HTTPS is not enforced yet. See [DNS.md](DNS.md).
