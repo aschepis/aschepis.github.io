@@ -11,12 +11,12 @@ DNS for this domain is at **GoDaddy** (`ns49/ns50.domaincontrol.com`):
 | Custom domain on the repo | ✅ `adamschepis.com`                             |
 | `www` CNAME               | ✅ → `aschepis.github.io.`                       |
 | Apex A records            | ✅ all four resolving                            |
-| Site serving over HTTP    | ✅ `http://adamschepis.com` → 200                |
-| **TLS certificate**       | ⏳ **`dns_changed` — issuance pending**          |
-| Enforce HTTPS             | ⏳ blocked until the certificate is issued       |
+| Site serving over HTTPS   | ✅ `https://adamschepis.com` → 200               |
+| **TLS certificate**       | ✅ `approved`                                    |
+| Enforce HTTPS             | ✅ enabled                                       |
 
-The DNS work is finished. The only outstanding item is the Let's Encrypt
-certificate, which GitHub requests automatically.
+The DNS work and certificate issuance are both finished, and HTTPS is now
+enforced.
 
 ## 1. ~~Verify the domain~~ — done
 
@@ -56,24 +56,22 @@ gh api -X PUT repos/aschepis/aschepis.github.io/pages -f cname=adamschepis.com
 
 `public/CNAME` also contains `adamschepis.com`, so every deploy re-asserts it.
 
-## 4. Turn on HTTPS — pending
+## 4. ~~Turn on HTTPS~~ — done
 
-Check the certificate state:
+The certificate reached `approved` and HTTPS enforcement was turned on:
+
+```sh
+gh api -X PUT repos/aschepis/aschepis.github.io/pages -F https_enforced=true
+```
+
+Check the current state any time with:
 
 ```sh
 gh api repos/aschepis/aschepis.github.io/pages \
   --jq '{cert: .https_certificate.state, https_enforced}'
 ```
 
-Once `cert` reads `approved`:
-
-```sh
-gh api -X PUT repos/aschepis/aschepis.github.io/pages -F https_enforced=true
-```
-
-The checkbox at **Settings → Pages** stays greyed out until then.
-
-### If the certificate stalls at `dns_changed`
+### If the certificate ever stalls at `dns_changed` again
 
 Issuance normally completes 15–30 minutes after the DNS resolves. While it is
 pending, GitHub serves its fallback `*.github.io` wildcard certificate on the
@@ -132,5 +130,5 @@ The consequence is that a broken certificate on `adamschepis.com` breaks *every*
 project site, not just this one. It bites hardest on repos with
 `https_enforced: true` (`emaillinks` is one): plain HTTP is redirected to HTTPS,
 which then fails the certificate check, leaving no working URL at all. This repo
-currently has `https_enforced: false`, which is the only reason the homepage
-still loads over HTTP while the certificate is pending.
+now has `https_enforced: true` as well, since the certificate is issued and
+verified working.
