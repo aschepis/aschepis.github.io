@@ -52,9 +52,36 @@ body {
   letter-spacing: -0.025em;
 }
 
+/* Two profile links, sitting under the name as a pair of small marks.
+   The list is pulled left by the link padding so the icons stay flush
+   with the name's left edge while keeping a comfortable tap target. */
+.social {
+  display: flex;
+  gap: 0.75rem;
+  margin: clamp(0.85rem, 2.2vh, 1.25rem) 0 0 -0.3rem;
+  padding: 0;
+  list-style: none;
+}
+
+.social__link {
+  display: block;
+  padding: 0.3rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.social__link:hover { color: var(--accent); }
+
+.social__icon {
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
 .rule {
   height: 0;
-  margin: clamp(1.25rem, 3vh, 2rem) 0 0;
+  margin: clamp(0.85rem, 2.2vh, 1.25rem) 0 0;
   border: 0;
   border-top: 1px solid var(--hair);
 }
